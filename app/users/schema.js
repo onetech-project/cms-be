@@ -5,9 +5,13 @@ const statics = require('../../utils/statics');
 
 class User extends Model {
   static get = statics.get;
+
   static store = statics.store;
+
   static update = statics.update;
+
   static deleteById = statics.deleteById;
+
   getDetail() {
     return {
       id: this.id,
@@ -17,6 +21,7 @@ class User extends Model {
       createdAt: this.createdAt,
       updatedBy: this.updatedBy,
       updatedAt: this.updatedAt,
+      roles: 'admin',
     };
   }
 }
@@ -33,7 +38,7 @@ User.init({
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    isEmail: true
+    isEmail: true,
   },
   password: {
     type: DataTypes.STRING,
@@ -46,27 +51,27 @@ User.init({
         const hash = bcryptjs.hashSync(value, salt);
         return hash.toString();
       })());
-    }
+    },
   },
   resetToken: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: true,
   },
   resetTokenExpiry: {
     type: DataTypes.DATE,
-    allowNull: true
+    allowNull: true,
   },
   createdBy: DataTypes.STRING,
   updatedBy: DataTypes.STRING,
-}, { 
+}, {
   sequelize,
   timestamps: true,
   indexes: [
     // Create a unique index on email
     {
       unique: true,
-      fields: ['email']
-    }
+      fields: ['email'],
+    },
   ],
 });
 

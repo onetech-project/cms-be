@@ -1,12 +1,12 @@
-const utils = require('./query');
 const { Op } = require('sequelize');
+const utils = require('./query');
 
 async function get(q) {
   try {
     const query = q;
-    if (query.perpage === '0') { 
+    if (query.perpage === '0') {
       query.perpage = await this.count();
-      query.currpage = 0; 
+      query.currpage = 0;
     }
     const perpage = Number(query.perpage || 10);
     const currpage = Number(query.currpage || 0);
@@ -49,7 +49,7 @@ async function get(q) {
 
 async function store(data) {
   const { currentUser, ...payload } = data;
-  let item = await this.create({ 
+  const item = await this.create({
     ...payload,
     createdBy: currentUser?.id,
     updatedBy: currentUser?.id,

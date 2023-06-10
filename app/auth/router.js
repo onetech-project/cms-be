@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-  login, register
+  login, register,
 } = require('./controller');
 
 const router = express.Router();

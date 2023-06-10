@@ -18,13 +18,13 @@ exports.show = async (req, res) => {
 };
 
 exports.store = async (req, res) => {
-  const data = { ...res.locals, ...req.body };
+  const data = { ...res.locals, ...req.body, ...req.files };
   const result = await Service.save(data);
   return response.resCreated(res, undefined, result);
 };
 
 exports.update = async (req, res) => {
-  const data = { ...res.locals, ...req.body };
+  const data = { ...res.locals, ...req.body, ...req.files };
   const result = await Service.update(req.params.id, data);
   return response.resUpdated(res, undefined, result);
 };

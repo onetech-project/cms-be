@@ -2,7 +2,7 @@ const Schema = require('./schema');
 
 exports.get = async (query) => {
   const result = await Schema.get(query);
-  return { ...result, data: result.data.map((x) => x.getDetail()) };
+  return result;
 };
 
 exports.findById = async (id) => {
