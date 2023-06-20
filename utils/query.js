@@ -7,7 +7,7 @@ exports.getQuery = (query, keyword, type) => { // untuk pencarian di dalam list
     if (key.includes(keyword)) {
       const newKey = key.replace(keyword, '');
       if (type === 'like') {
-        res[newKey] = {[Op.like]: `%${query[key]}%`};
+        res[newKey] = { [Op.like]: `%${query[key]}%` };
       } else if (type === 'bool') {
         if (query[key] === 'false' || query[key] === '0') {
           res[newKey] = false;

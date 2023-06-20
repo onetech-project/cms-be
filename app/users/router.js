@@ -2,7 +2,9 @@ const express = require('express');
 const {
   index, show, store, update, deleteById,
 } = require('./controller');
-const { canRead, canStore, canUpdate, canDeleteById } = require('./policies');
+const {
+  canRead, canStore, canUpdate, canDeleteById,
+} = require('./policies');
 
 const router = express.Router();
 

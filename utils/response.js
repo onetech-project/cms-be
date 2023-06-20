@@ -88,8 +88,8 @@ functions.respondError = (res, statusCode, msg, err, meta) => {
 * @api public
 */
 functions.resSuccess = (res, msg, meta) => {
-  msg = (msg !== undefined) ? msg : 'Success';
-  functions.respond(res, 200, msg, meta);
+  const message = (msg !== undefined) ? msg : 'Success';
+  functions.respond(res, 200, message, meta);
 };
 
 /**
@@ -101,11 +101,12 @@ functions.resSuccess = (res, msg, meta) => {
 * @api public
 */
 functions.resSuccessData = (res, msg, data, meta) => {
-  msg = (msg !== undefined) ? msg : 'Success';
-  if (meta !== undefined) {
-    meta.count = data.length;
+  const message = (msg !== undefined) ? msg : 'Success';
+  const metas = meta;
+  if (metas !== undefined) {
+    metas.count = data.length;
   }
-  functions.respondData(res, 200, msg, data, meta);
+  functions.respondData(res, 200, message, data, meta);
 };
 /**
 * Send success response with data No Change
@@ -116,11 +117,12 @@ functions.resSuccessData = (res, msg, data, meta) => {
 * @api public
 */
 functions.resSuccessDataNoChange = (res, msg, data, meta) => {
-  msg = (msg !== undefined) ? msg : 'Success';
-  if (meta !== undefined) {
-    meta.count = data.length;
+  const message = (msg !== undefined) ? msg : 'Success';
+  const metas = meta;
+  if (metas !== undefined) {
+    metas.count = data.length;
   }
-  functions.respondData(res, 203, msg, data, meta);
+  functions.respondData(res, 203, message, data, meta);
 };
 
 /**
@@ -132,8 +134,8 @@ functions.resSuccessDataNoChange = (res, msg, data, meta) => {
 * @api public
 */
 functions.resCreated = (res, msg, data, meta) => {
-  msg = (msg !== undefined) ? msg : 'Created';
-  functions.respondData(res, 201, msg, data, meta);
+  const message = (msg !== undefined) ? msg : 'Created';
+  functions.respondData(res, 201, message, data, meta);
 };
 /**
 * Send successful updated response with data
@@ -144,8 +146,8 @@ functions.resCreated = (res, msg, data, meta) => {
 * @api public
 */
 functions.resUpdated = (res, msg, data, meta) => {
-  msg = (msg !== undefined) ? msg : 'Updated';
-  functions.respondData(res, 200, msg, data, meta);
+  const message = (msg !== undefined) ? msg : 'Updated';
+  functions.respondData(res, 200, message, data, meta);
 };
 
 /**
@@ -157,8 +159,8 @@ functions.resUpdated = (res, msg, data, meta) => {
 * @api public
 */
 functions.resBadRequest = (res, msg, err, meta) => {
-  msg = (msg !== undefined) ? msg : 'Bad Request';
-  functions.respondError(res, 400, msg, err, meta);
+  const message = (msg !== undefined) ? msg : 'Bad Request';
+  functions.respondError(res, 400, message, err, meta);
 };
 
 /**
@@ -170,8 +172,8 @@ functions.resBadRequest = (res, msg, err, meta) => {
 * @api public
 */
 functions.resUnauthorized = (res, msg, err, meta) => {
-  msg = (msg !== undefined) ? msg : 'Unauthorized';
-  functions.respondError(res, 401, msg, err, meta);
+  const message = (msg !== undefined) ? msg : 'Unauthorized';
+  functions.respondError(res, 401, message, err, meta);
 };
 
 /**
@@ -183,8 +185,8 @@ functions.resUnauthorized = (res, msg, err, meta) => {
 * @api public
 */
 functions.resForbidden = (res, msg, err, meta) => {
-  msg = (msg !== undefined) ? msg : 'Forbidden';
-  functions.respondError(res, 403, msg, err, meta);
+  const message = (msg !== undefined) ? msg : 'Forbidden';
+  functions.respondError(res, 403, message, err, meta);
 };
 
 /**
@@ -196,8 +198,8 @@ functions.resForbidden = (res, msg, err, meta) => {
 * @api public
 */
 functions.resNotFound = (res, msg, err, meta) => {
-  msg = (msg !== undefined) ? msg : 'Not found';
-  functions.respondError(res, 404, msg, err, meta);
+  const message = (msg !== undefined) ? msg : 'Not found';
+  functions.respondError(res, 404, message, err, meta);
 };
 
 /**
@@ -209,9 +211,9 @@ functions.resNotFound = (res, msg, err, meta) => {
 * @api public
 */
 functions.resInternalServerError = (res, msg, err, meta) => {
-  msg = (msg !== undefined) ? msg : 'Internal Server Error';
+  const message = (msg !== undefined) ? msg : 'Internal Server Error';
 
-  functions.respondError(res, 500, msg, err, meta);
+  functions.respondError(res, 500, message, err, meta);
 };
 
 /**

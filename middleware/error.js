@@ -2,7 +2,7 @@ const respond = require('../utils/response');
 const { convert } = require('../utils/validationError');
 
 // eslint-disable-next-line no-unused-vars
-module.exports = function (err, req, res, next) {
+module.exports = (err, req, res, next) => {
   switch (err.name) {
   case 'ValidationError':
     return respond.resValidationError(res, 'ValidationError', convert(err));

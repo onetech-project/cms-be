@@ -9,7 +9,7 @@ exports.login = async (payload) => {
   const passwordMatch = bcryptjs.compareSync(password, user.password);
   if (!passwordMatch) throw new BadRequestError('username or password incorrect!');
   const token = jwt.sign(user.getDetail(), process.env.JWT_SECRET, { expiresIn: '24h' });
-  return token;
+  return { user: user.getDetail(), token };
 };
 
 exports.register = async (payload) => {
